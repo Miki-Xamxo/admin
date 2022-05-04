@@ -1,0 +1,19 @@
+.message {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  color: rgb(97, 26, 21);
+  background-color: rgb(253, 236, 234);
+  margin: 10px 0;
+  padding: 6px 16px;
+  font-size: 14px;
+  border-radius: 4px;
+}
+
+.btn {
+  display: flex;
+  align-items: center;
+  background-color: inherit;
+  border: 0;
+  cursor: pointer;
+}

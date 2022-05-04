@@ -1,26 +1,37 @@
-import React from 'react';
-import logo from './logo.svg';
-import './App.css';
+import React from "react";
+import { Route, Routes } from "react-router-dom";
 
-function App() {
+import Header from "./Components/Common/Header";
+import { Word, Category, Language, Home } from "./pages";
+import ErrorMessage from "./Components/Common/ErrorMessage";
+
+import s from "./App.module.scss";
+
+const App: React.FC = () => {
+  const [showMessage, setShowMassege] = React.useState(true);
+
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.tsx</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+    <div>
+      <Header />
+      <main>
+        <div className={s.container}>
+          {showMessage && (
+            <ErrorMessage
+              message="Произошла ошибка при запросе данных! Пожалуйста обновите страницу"
+              closeMessage={() => setShowMassege(false)}
+            />
+          )}
+
+          <Routes>
+            <Route path="/" element={<Home />} />
+            <Route path="/categories" element={<Category />} />
+            <Route path="/categories/:id" element={<Word />} />
+            <Route path="/language" element={<Language />} />
+          </Routes>
+        </div>
+      </main>
     </div>
   );
-}
+};
 
 export default App;
